@@ -7,12 +7,18 @@ import rigoImage from "../../img/rigo-baby.jpg";
 const Home = () => {
 	const [tarea, setTarea]=useState("")
 	const [todos, setTodos]=useState([])
+	//agregar tarea
 	function submit(e){
 		e.preventDefault()
 		setTarea(e.target.value);
 		console.log(tarea);
+		setTodos([...todos, tarea]);
 		setTarea("");
-		// setTodos a lo que es set tareas con concat o push
+	}
+	console.log(todos);
+	function borrar(item){
+		// usar filter
+		console.log(item);
 	}
 	return (
 		<div className="text-center">
@@ -28,6 +34,9 @@ const Home = () => {
 			value={tarea}
           	/>
 			</form>
+			<div>
+				{todos.map((item,index)=><li key={index}> {item} <span onClick={()=>borrar(item)}>  X </span></li>)}
+			</div>
 		</div>
 	);
 };
