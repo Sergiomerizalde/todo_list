@@ -16,9 +16,16 @@ const Home = () => {
 		setTarea("");
 	}
 	console.log(todos);
-	function borrar(item){
+
+	function borrar(elemento){
 		// usar filter
-		console.log(item);
+		let borrado = todos.filter((item, index)=>{
+			if(elemento !== index){
+				return item; 
+			}
+		})
+		setTodos(borrado);
+		console.log(elemento);
 	}
 	return (
 		<div className="text-center">
@@ -35,8 +42,9 @@ const Home = () => {
           	/>
 			</form>
 			<div>
-				{todos.map((item,index)=><li key={index}> {item} <span onClick={()=>borrar(item)}>  X </span></li>)}
+				{todos.map((item,index)=><li key={index}> {item} <span onClick={()=>borrar(index)}>  X </span></li>)}
 			</div>
+			<p>Tenemos {todos.length>0 ? todos.length:"no hay tareas"} tareas</p>
 		</div>
 	);
 };
