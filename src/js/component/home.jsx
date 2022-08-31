@@ -44,7 +44,7 @@ const Home = () => {
 			<div>
 				{todos.map((item,index)=><li key={index}> {item} <span onClick={()=>borrar(index)}>  X </span></li>)}
 			</div>
-			<p>Tenemos {todos.length>0 ? todos.length:"no hay tareas"} tareas</p>
+			<p>Actualmente hay {todos.length>0 ? todos.length:0} tareas</p>
 		</div>
 	);
 };
